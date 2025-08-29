@@ -41,4 +41,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		
             if ($tabela) {
 				$stmt2 = $conn->prepare("SELECT * FROM $tabela WHERE id = :id");
+				$stmt2->execute(['id' => $korisnik['povezani_id']]);
+				$detalji = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+				if ($detalji) {
+					$_SESSION['ime'] = $detalji['ime'];
+					$_SESSION['prezime'] = $detalji['prezime'];
+				} else {
+					$greska = "Nije moguće dohvatiti podatke o korisniku.";
+					exit;
+				}
+			}
+
+			header("Location: dashboard/" . $korisnik['uloga'] . ".php");
+			exit;
 <?php include("includes/footer.php"); ?>
