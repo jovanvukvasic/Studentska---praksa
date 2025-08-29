@@ -83,4 +83,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <label for="password" class="form-label">Lozinka</label>
               <input type="password" class="form-control" id="password" name="password" required>
             </div>        
+            <button type="submit" class="btn btn-primary w-100">Prijavi se</button>
+			<div class="text-center mt-3">
+			  <a href="registrovanje_kompanije.php" class="btn btn-link">Registrovanje kompanije</a>
+			</div>
+
+            <?php if (isset($greska)): ?>
+              <div class="alert alert-danger mt-3"><?php echo $greska; ?></div>
+            <?php endif; ?>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <?php include("includes/footer.php"); ?>
