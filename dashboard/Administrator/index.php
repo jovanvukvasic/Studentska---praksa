@@ -13,4 +13,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($korisnik) {
         if (password_verify($lozinka, $korisnik['sifra'])) {
 		   if ($lozinka === $korisnik['sifra']) {
+            $_SESSION['korisnik_id'] = $korisnik['id'];
+            $_SESSION['uloga'] = $korisnik['uloga'];
+            $_SESSION['email'] = $korisnik['email'];
+				$_SESSION['povezani_id'] = $korisnik['povezani_id'];
+		
+            switch ($korisnik['uloga']) {
+				case 'student':
+					$tabela = 'studenti';
+					break;
+				case 'mentor':
+					$tabela = 'mentori';
+					break;
+				case 'profesor':
+					$tabela = 'profesori';
 <?php include("includes/footer.php"); ?>
