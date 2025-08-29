@@ -27,4 +27,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 					break;
 				case 'profesor':
 					$tabela = 'profesori';
+					break;
+				case 'moderator':
+					$tabela = 'moderatori';
+					break;
+				case 'admin':
+					$tabela = null; 
+					break;
+				default:
+					$greska = "Nepoznata uloga.";
+					exit;
+			}
+		
+            if ($tabela) {
+				$stmt2 = $conn->prepare("SELECT * FROM $tabela WHERE id = :id");
 <?php include("includes/footer.php"); ?>
