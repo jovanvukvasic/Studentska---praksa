@@ -55,4 +55,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 			header("Location: dashboard/" . $korisnik['uloga'] . ".php");
 			exit;
+
+        } else {
+            $greska = "Pogrešni podaci.";
+        }
+    } else {
+        $greska = "Ne postoji korisnik sa tim emailom i sifrom.";
+    }
+}
+
+?>
+
+
+<?php include("includes/header.php"); ?>
+<div class="container mt-5">
 <?php include("includes/footer.php"); ?>
