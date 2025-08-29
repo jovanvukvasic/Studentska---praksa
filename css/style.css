@@ -1,0 +1,15 @@
+.sidebar {
+  height: 100vh;
+  position: fixed;
+}
+
+.nav-link {
+  font-size: 1.1rem;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #0d6efd;
+}
+
+// end of file
