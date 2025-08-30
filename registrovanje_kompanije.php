@@ -77,4 +77,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <input type="text" name="kontakt_prezime" class="form-control" required>
             </div>
             <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Lozinka</label>
+              <input type="password" name="sifra" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Telefon</label>
+              <input type="text" name="telefon" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Registruj kompaniju</button>
+          </form>
 <?php include("includes/footer.php"); ?>
