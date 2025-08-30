@@ -16,6 +16,23 @@ $profesori = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <table class="table table-bordered table-striped">
   <thead class="table-light">
     <tr>
+      <th>ID</th>
+      <th>Ime</th>
+      <th>Prezime</th>
+      <th>Zvanje</th>
+      <th>Email</th>
+      <th>Telefon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach ($profesori as $prof): ?>
+      <tr>
+        <td><?= htmlspecialchars($prof['id']) ?></td>
+        <td><?= htmlspecialchars($prof['ime']) ?></td>
+        <td><?= htmlspecialchars($prof['prezime']) ?></td>
+        <td><?= htmlspecialchars($prof['zvanje']) ?></td>
+        <td><?= htmlspecialchars($prof['email']) ?></td>
+        <td><?= htmlspecialchars($prof['telefon']) ?></td>
     <?php endforeach; ?>
   </tbody>
 </table>
