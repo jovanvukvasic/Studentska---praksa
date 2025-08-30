@@ -27,4 +27,22 @@ $komisije = $komisijeStmt->fetchAll(PDO::FETCH_COLUMN);
             </thead>
             <tbody>
                 <?php foreach ($komisije as $komisija): ?>
+                    <?php
+                        $profQuery = "SELECT p.ime, p.prezime 
+                                      FROM komisije_profesori kp 
+                                      JOIN profesori p ON kp.profesor_id = p.id
+                                      WHERE kp.komisija = ?";
+                        $profStmt = $conn->prepare($profQuery);
+                        $profStmt->execute([$komisija]);
+                        $profesori = $profStmt->fetchAll(PDO::FETCH_ASSOC);
+                    ?>
+                    <tr>
+                        <td><?= htmlspecialchars(ucfirst($komisija)) ?></td>
+                        <td>
+                            <?php if (!empty($profesori)): ?>
+                                <?php foreach ($profesori as $p): ?>
+                                    <?= htmlspecialchars($p['ime'] . ' ' . $p['prezime']) ?><br>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <em>Nema profesora</em>
 </html>
