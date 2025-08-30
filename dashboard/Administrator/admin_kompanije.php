@@ -21,6 +21,28 @@ try {
     <h2>📋 Lista kompanija</h2>
 
     <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Naziv</th>
+                <th>Adresa</th>
+                <th>Kontakt osoba</th>
+                <th>Moderator ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (count($kompanije) > 0): ?>
+                <?php foreach ($kompanije as $komp): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($komp['id']) ?></td>
+                        <td><?= htmlspecialchars($komp['naziv']) ?></td>
+                        <td><?= htmlspecialchars($komp['adresa']) ?></td>
+                        <td><?= htmlspecialchars($komp['kontakt_osoba']) ?></td>
+                        <td><?= htmlspecialchars($komp['moderator_id']) ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr><td colspan="5" class="text-center">Nema registrovanih kompanija.</td></tr>
             <?php endif; ?>
         </tbody>
     </table>
