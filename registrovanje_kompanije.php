@@ -64,4 +64,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <label class="form-label">Naziv kompanije</label>
               <input type="text" name="naziv" class="form-control" required>
             </div>
+            <div class="mb-3">
+              <label class="form-label">Adresa</label>
+              <input type="text" name="adresa" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Ime kontakt osobe</label>
+              <input type="text" name="kontakt_ime" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Prezime kontakt osobe</label>
+              <input type="text" name="kontakt_prezime" class="form-control" required>
+            </div>
+            <div class="mb-3">
 <?php include("includes/footer.php"); ?>
