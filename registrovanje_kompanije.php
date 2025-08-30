@@ -51,4 +51,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title mb-4 text-center">Registracija kompanije</h4>
+          <?php if (isset($poruka)): ?>
+            <div class="alert alert-success"><?php echo $poruka; ?></div>
+          <?php elseif (isset($greska)): ?>
+            <div class="alert alert-danger"><?php echo $greska; ?></div>
+          <?php endif; ?>
+          <form method="POST" action="registrovanje_kompanije.php">
+            <div class="mb-3">
+              <label class="form-label">Naziv kompanije</label>
+              <input type="text" name="naziv" class="form-control" required>
+            </div>
 <?php include("includes/footer.php"); ?>
