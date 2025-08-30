@@ -12,4 +12,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         $conn->beginTransaction();
+
+        $kontakt_osoba = $kontakt_ime . ' ' . $kontakt_prezime;
+        $stmt1 = $conn->prepare("INSERT INTO kompanije (naziv, adresa, kontakt_osoba) VALUES (:naziv, :adresa, :kontakt_osoba)");
+        $stmt1->execute([
+            'naziv' => $naziv,
+            'adresa' => $adresa,
+            'kontakt_osoba' => $kontakt_osoba
+        ]);
+
+        $st2 = $conn->prepare("INSERT INTO moderatori (ime, prezime, email, sifra, telefon) VALUES (:ime, :prezime, :email, :sifra, :telefon)");
+        $stmt2->execute([
+            'ime' => $kontakt_ime,
+            'prezime' => $kontakt_prezime,
 <?php include("includes/footer.php"); ?>
