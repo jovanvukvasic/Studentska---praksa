@@ -38,4 +38,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'povezani_id' => $moderator_id
         ]);
 
+        $conn->commit();
+        $poruka = "Registracija uspješna.";
+    } catch (Exception $e) {
+        $conn->rollBack();
+        $greska = "Greška prilikom registracije: " . $e->getMessage();
+    }
+}
+?>
+
+<?php include("includes/header.php"); ?>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
 <?php include("includes/footer.php"); ?>
