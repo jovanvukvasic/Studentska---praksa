@@ -25,4 +25,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt2->execute([
             'ime' => $kontakt_ime,
             'prezime' => $kontakt_prezime,
+            'email' => $email,
+            'sifra' => $sifra,
+            'telefon' => $telefon
+        ]);
+        $moderator_id = $conn->lastInsertId();
+
+        $stmt3 = $conn->prepare("INSERT INTO korisnici (email, sifra, uloga, povezani_id) VALUES (:email, :sifra, 'moderator', :povezani_id)");
+        $stmt3->execute([
+            'email' => $email,
+            'sifra' => $sifra,
+            'povezani_id' => $moderator_id
+        ]);
+
 <?php include("includes/footer.php"); ?>
