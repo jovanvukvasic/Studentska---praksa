@@ -45,4 +45,22 @@ $komisije = $komisijeStmt->fetchAll(PDO::FETCH_COLUMN);
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <em>Nema profesora</em>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <a href="uredi_komisiju.php?id=<?= urlencode($komisija) ?>" class="btn btn-sm btn-primary">
+                                Uredi komisiju
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+        <div class="mt-4">
+            <a href="dodaj_komisiju.php" class="btn btn-success">
+                Dodaj novu komisiju
+            </a>
+        </div>
+    </div>
 </html>
