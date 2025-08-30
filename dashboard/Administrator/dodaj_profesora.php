@@ -37,4 +37,23 @@ unset($_SESSION['errors'], $_SESSION['old']);
     </div>
     <div class="mb-3">
       <label for="zvanje" class="form-label">Zvanje</label>
+      <input type="text" class="form-control" id="zvanje" name="zvanje" value="<?=htmlspecialchars($old['zvanje'] ?? '')?>" required>
+    </div>
+    <div class="mb-3">
+      <label for="telefon" class="form-label">Telefon</label>
+      <input type="text" class="form-control" id="telefon" name="telefon" value="<?=htmlspecialchars($old['telefon'] ?? '')?>" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" value="<?=htmlspecialchars($old['email'] ?? '')?>" required>
+    </div>
+    <div class="mb-3">
+      <label for="sifra" class="form-label">Šifra</label>
+      <input type="password" class="form-control" id="sifra" name="sifra" required>
+    </div>
+    <button type="submit" class="btn btn-success">Sačuvaj</button>
+    <a href="admin.php" class="btn btn-secondary">Nazad</a>
+  </form>
+</div>
+
 <?php include("../includes/footer.php"); ?>
