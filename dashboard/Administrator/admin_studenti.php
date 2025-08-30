@@ -29,4 +29,34 @@ $studenti = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <th>Prezime</th>
         <th>Indeks</th>
         <th>Fakultet</th>
+        <th>Smjer</th>
+        <th>Usmjerenje</th>
+        <th>Prosjek</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($studenti as $student): ?>
+        <tr>
+          <td><?= htmlspecialchars($student['id']) ?></td>
+          <td><?= htmlspecialchars($student['ime']) ?></td>
+          <td><?= htmlspecialchars($student['prezime']) ?></td>
+          <td><?= htmlspecialchars($student['indeks']) ?></td>
+          <td><?= htmlspecialchars($student['fakultet']) ?></td>
+          <td><?= htmlspecialchars($student['smjer']) ?></td>
+          <td><?= htmlspecialchars($student['usmjerenje']) ?></td>
+          <td><?= htmlspecialchars($student['prosjek']) ?></td>
+          <td><?= htmlspecialchars($student['email']) ?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  document.getElementById('importButton').addEventListener('click', () => {
+    alert('Opcija uvoza studenata iz fajla biće implementirana kasnije.');
+  });
+</script>
+
 <?php include("../includes/footer.php"); ?>
