@@ -28,5 +28,34 @@ if ($smjer === '') $errors[] = "Smjer je obavezan.";
 if ($usmjerenje === '') $errors[] = "Usmjerenje je obavezno.";
 if ($prosjek === '' || !is_numeric($prosjek) || $prosjek < 0 || $prosjek > 10) $errors[] = "Prosjek mora biti broj od 0 do 10.";
 if ($email === '') $errors[] = "Email je obavezan.";
+elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Email nije validan.";
+if ($sifra === '') $errors[] = "Šifra je obavezna.";
+
+
+try {
+    $conn->beginTransaction();
+
+    $hashSifra = password_hash($sifra, PASSWORD_DEFAULT);
+
+    $query = "INSERT INTO studenti (ime, prezime, indeks, fakultet, smjer, usmjerenje, prosjek, email, sifra) 
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$ime, $prezime, $indeks, $fakultet, $smjer, $usmjerenje, $prosjek, $email, $hashSifra]);
+
+    $query2 = "INSERT INTO korisnici (email, sifra, uloga) VALUES (?, ?, 'student')";
+    $stmt2 = $conn->prepare($query2);
+    $stmt2->execute([$email, $hashSifra]);
+
+    $conn->commit();
+
+    header("Location: admin_studenti.php");
+    exit;
+} catch (PDOException $e) {
+    $conn->rollBack();
+    $_SESSION['errors'] = ["Greška u bazi podataka: " . $e->getMessage()];
+    $_SESSION['old'] = $old;
+    header("Location: dodaj_studenta.php");
+    exit;
+}
 
 // end of file
