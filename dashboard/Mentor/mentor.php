@@ -43,4 +43,48 @@ if (!isset($_SESSION['korisnik_id']) || $_SESSION['uloga'] !== 'mentor') {
         <div id="kompanijaContainer">
           <div class="text-muted">Učitavanje podataka...</div>
         </div>
+        <hr>
+      </section>
+
+      <section id="studenti" class="content-section d-none">
+        <h2>🎓 Studenti na praksi</h2>
+        <div id="studentiContainer">
+          <div class="text-muted">Učitavanje studenata...</div>
+        </div>
+        <hr>
+      </section>
+    </main>
+
+  </div>
+</div>
+
+<script>
+  function showSection(id, event) {
+    if (event) event.preventDefault();
+
+    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+    event.target.classList.add('active');
+
+    document.querySelectorAll('.content-section').forEach(section => {
+      section.classList.add('d-none');
+    });
+
+    const section = document.getElementById(id);
+    section.classList.remove('d-none');
+
+    if (id === 'kompanija') {
+      fetch('mentor_kompanija.php')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('kompanijaContainer').innerHTML = data;
+        });
+    } else if (id === 'studenti') {
+      fetch('mentor_studenti.php')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('studentiContainer').innerHTML = data;
+        });
+    }
+  }
+</script>
 <?php include("../includes/footer.php"); ?>
