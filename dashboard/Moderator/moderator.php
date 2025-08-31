@@ -46,4 +46,51 @@ if (!isset($_SESSION['korisnik_id']) || $_SESSION['uloga'] !== 'moderator') {
       </section>
 
       </section>
+
+      <section id="konkursi" class="content-section d-none">
+        
+      </section>
+    </main>
+
+  </div>
+</div>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+    event.target.classList.add('active');
+
+    document.querySelectorAll('.content-section').forEach(section => section.classList.add('d-none'));
+
+    const section = document.getElementById(id);
+    section.classList.remove('d-none');
+
+    if (id === 'profil') {
+      fetch('moderator_profil.php')
+        .then(response => response.text())
+        .then(data => {
+          section.innerHTML = data;
+        });
+    } else if (id === 'kompanije') {
+      fetch('moderator_kompanije.php')
+        .then(response => response.text())
+        .then(data => {
+          section.innerHTML = data;
+        });
+    } else if (id === 'mentori') {
+      fetch('moderator_mentori.php')
+        .then(response => response.text())
+        .then(data => {
+          section.innerHTML = data;
+        });
+    }else if (id === 'konkursi') {
+      fetch('moderator_postavi_konkurs.php')
+        .then(response => response.text())
+        .then(data => {
+          section.innerHTML = data;
+        });
+    }
+  }
+</script>
+
 <?php include("../includes/footer.php"); ?>
