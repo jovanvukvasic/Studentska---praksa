@@ -60,18 +60,4 @@ $trenutniClanovi = $trenutniStmt->fetchAll(PDO::FETCH_COLUMN);
         <form method="post">
             <div class="mb-3">
                 <label class="form-label">Izaberite profesore:</label>
-                <?php foreach ($profesori as $prof): ?>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="profesori[]" value="<?= $prof['id'] ?>"
-                            id="prof<?= $prof['id'] ?>" <?= in_array($prof['id'], $trenutniClanovi) ? 'checked' : '' ?>>
-                        <label class="form-check-label" for="prof<?= $prof['id'] ?>">
-                            <?= htmlspecialchars($prof['ime'] . ' ' . $prof['prezime']) ?>
-                        </label>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-
-            <button type="submit" class="btn btn-success">Sačuvaj promjene</button>
-            <a href="admin_komisije.php" class="btn btn-secondary">Nazad</a>
-        </form>
 </html>
