@@ -24,6 +24,31 @@ $studenti = $query->fetchAll();
     <h4>🎓 Studenti kod vas na praksi</h4>
     <table class="table table-bordered table-striped mt-3">
         <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Ime i prezime</th>
+                <th>Indeks</th>
+                <th>Smjer</th>
+                <th>Akcija</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (empty($studenti)): ?>
+                <tr><td colspan="5" class="text-center">Trenutno nemate zaduženih studenata.</td></tr>
+            <?php else: ?>
+                <?php foreach ($studenti as $i => $s): ?>
+                    <tr>
+                        <td><?= $i + 1 ?></td>
+                        <td><?= htmlspecialchars($s['ime'] . ' ' . $s['prezime']) ?></td>
+                        <td><?= htmlspecialchars($s['indeks']) ?></td>
+                        <td><?= htmlspecialchars($s['smjer']) ?></td>
+                        <td>
+                            <a class="btn btn-info btn-sm" href="mentor_uvid.php?id=<?= $s['id']?>" class="btn btn-link text-decoration-none">
+							  📘 Uvid u rad
+							</a>
+
+                        </td>
+                    </tr>
             <?php endif ?>
         </tbody>
     </table>
