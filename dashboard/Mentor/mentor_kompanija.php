@@ -29,6 +29,21 @@ if (!$kompanija) {
     <h4>🏢 Informacije o kompaniji</h4>
     <table class="table table-bordered mt-3">
         <tr>
+            <th>Naziv</th>
+            <td><?= htmlspecialchars($kompanija['naziv']) ?></td>
+        </tr>
+        <tr>
+            <th>Adresa</th>
+            <td><?= htmlspecialchars($kompanija['adresa']) ?></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><?= htmlspecialchars($kompanija['email']) ?></td>
+        </tr>
+        <tr>
+            <th>Telefon</th>
+            <td><?= htmlspecialchars($kompanija['telefon']) ?></td>
+        </tr>
             <td><?= htmlspecialchars($kompanija['kontakt_osoba']) ?></td>
         </tr>
     </table>
