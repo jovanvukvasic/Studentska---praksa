@@ -118,6 +118,25 @@ $komentar = $komentari[$datum] ?? '';
     <tbody>
     <?php foreach ($ostaliDani as $dan): ?>
       <tr>
+        <td><?= $dan['dan'] ?></td>
+        <td><?= date('d.m.Y', strtotime($dan['datum'])) ?></td>
+        <td>
+  <?= $dan['opis'] ? htmlspecialchars($dan['opis']) : '<span class="text-muted fst-italic">Nema unosa</span>' ?>
+</td>
+        <td><?= htmlspecialchars($dan['komentar']) ?: '<span class="text-muted fst-italic">Bez komentara</span>' ?></td>
+        <td>
+          <a href="?id=<?= $student_id ?>&fokus_dan=<?= $dan['datum'] ?>" class="btn btn-outline-primary btn-sm">
+            📝 Uredi komentar
+          </a>
+		  <a href="mailto:student<?= $student_id ?>@example.com" class="btn btn-outline-info ms-2">📧</a>
+
+        </td>
+      </tr>
+    <?php endforeach; ?>
+    </tbody>
+  </table>
+</div>
+
 </html>
 <?php
 $zadnji_dan_prakse = clone $kraj;
