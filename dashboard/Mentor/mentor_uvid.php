@@ -80,6 +80,25 @@ $komentar = $komentari[$datum] ?? '';
     <form method="POST" action="snimi_komentar_mentor.php">
       <input type="hidden" name="student_id" value="<?= $student_id ?>">
       <input type="hidden" name="mentor_id" value="<?= $mentor_id ?>">
+      <input type="hidden" name="datum" value="<?= $datum ?>">
+      <div class="mb-3">
+        <label class="form-label">📝 Vaš komentar:</label>
+        <textarea name="komentar" class="form-control" rows="4"><?= htmlspecialchars($komentar) ?></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">💾 Sačuvaj komentar</button>
+    </form>
+  </div>
+</div>
+<?php
+    } else {
+        $ostaliDani[] = [
+            'dan' => $brojacDana,
+            'datum' => $datum,
+            'opis' => $opis,
+            'komentar' => $komentar,
+        ];
+    }
+
 </html>
 <?php
 $zadnji_dan_prakse = clone $kraj;
