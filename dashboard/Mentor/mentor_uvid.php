@@ -99,6 +99,25 @@ $komentar = $komentari[$datum] ?? '';
         ];
     }
 
+    $brojacDana++;
+}
+?>
+
+<h5 class="mt-4">📋 Ostali dani prakse</h5>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>#</th>
+        <th>Datum</th>
+        <th>Aktivnost</th>
+        <th>Komentar mentora</th>
+        <th>Akcija</th>
+      </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($ostaliDani as $dan): ?>
+      <tr>
 </html>
 <?php
 $zadnji_dan_prakse = clone $kraj;
