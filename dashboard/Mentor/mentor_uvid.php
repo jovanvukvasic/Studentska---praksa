@@ -61,6 +61,25 @@ $fokus_prikazan = false;
 $ostaliDani = [];
 
 foreach ($period as $dan) {
+    $datum = $dan->format('Y-m-d');
+    $opis = $aktivnosti[$datum] ?? null;
+$komentar = $komentari[$datum] ?? '';
+
+    if ($datum === $fokus_dan && !$fokus_prikazan) {
+        $fokus_prikazan = true;
+?>
+<div class="card border-primary mb-4 shadow">
+  <div class="card-header bg-primary text-white fw-bold">
+    Fokusirani dan: <?= $dan->format('l, d.m.Y') ?> (Dan <?= $brojacDana ?>)
+  </div>
+  <div class="card-body">
+    <p><strong>Aktivnost studenta:</strong><br>
+  <?= $opis ? htmlspecialchars($opis) : '<span class="text-muted fst-italic">Nema unosa</span>' ?>
+</p>
+
+    <form method="POST" action="snimi_komentar_mentor.php">
+      <input type="hidden" name="student_id" value="<?= $student_id ?>">
+      <input type="hidden" name="mentor_id" value="<?= $mentor_id ?>">
 </html>
 <?php
 $zadnji_dan_prakse = clone $kraj;
