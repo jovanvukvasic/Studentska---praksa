@@ -27,5 +27,19 @@ if (!$praksa_id) {
 
 $provjera = $conn->prepare("SELECT COUNT(*) FROM konkursi WHERE student_id = ? AND praksa_id = ?");
 $provjera->execute([$student_id, $praksa_id]);
+$broj = $provjera->fetchColumn();
+
+if ($broj > 0) {
+    echo "Već ste konkurisali na ovu praksu.";
+    exit;
+}
+
+$insert = $conn->prepare("INSERT INTO konkursi (student_id, praksa_id, dodatno) VALUES (?, ?, ?)");
+$uspjeh = $insert->execute([$student_id, $praksa_id, $dodatno]);
+
+if ($uspjeh) {
+    echo "Uspešno ste konkurisali na izabranu praksu.";
+} else {
+    http_response_code(500);
 
 // end of file
