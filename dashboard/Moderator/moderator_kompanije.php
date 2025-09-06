@@ -20,4 +20,25 @@ $kompanije = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <h2>🏢 Moje kompanije</h2>
 
 <?php if (count($kompanije) > 0): ?>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Naziv</th>
+                <th>Adresa</th>
+                <th>Kontakt osoba</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($kompanije as $kompanija): ?>
+                <tr>
+                    <td><?= htmlspecialchars($kompanija['naziv']); ?></td>
+                    <td><?= htmlspecialchars($kompanija['adresa']); ?></td>
+                    <td><?= htmlspecialchars($kompanija['kontakt_osoba']); ?></td>
+                    
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php else: ?>
 <?php endif; ?>
