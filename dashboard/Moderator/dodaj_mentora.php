@@ -65,4 +65,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <?php if (isset($poruka)): ?>
             <div class="alert alert-success"><?= $poruka; ?></div>
           <?php elseif (isset($greska)): ?>
+            <div class="alert alert-danger"><?= $greska; ?></div>
+          <?php endif; ?>
+          <form method="POST">
+            <div class="mb-3">
+              <label class="form-label">Ime</label>
+              <input type="text" name="ime" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Prezime</label>
+              <input type="text" name="prezime" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Uloga u kompaniji</label>
+              <input type="text" name="uloga_kompanije" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Lozinka</label>
+              <input type="password" name="sifra" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Telefon</label>
+              <input type="text" name="telefon" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Dodaj mentora</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 <?php include("../includes/footer.php"); ?>
