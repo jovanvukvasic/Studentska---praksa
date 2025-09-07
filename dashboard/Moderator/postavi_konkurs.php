@@ -61,4 +61,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <h4 class="card-title mb-4 text-center">Objavi novi konkurs za praksu</h4>
           <?php if (isset($poruka)): ?>
             <div class="alert alert-success"><?= $poruka; ?></div>
+          <?php elseif (isset($greska)): ?>
+            <div class="alert alert-danger"><?= $greska; ?></div>
+          <?php endif; ?>
+          <form method="POST" action="">
+            <div class="mb-3">
+              <label class="form-label">Naziv prakse</label>
+              <input type="text" name="naziv" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Organizacija</label>
+              <input type="text" name="organizacija" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Početak prakse</label>
+              <input type="date" name="pocetak" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Kraj prakse</label>
+              <input type="date" name="kraj" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Objavi praksu</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <?php include("../includes/footer.php"); ?>
