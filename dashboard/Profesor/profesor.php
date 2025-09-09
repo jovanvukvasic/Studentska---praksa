@@ -28,4 +28,33 @@ if (!isset($_SESSION['korisnik_id']) || $_SESSION['uloga'] !== 'profesor') {
           </li>
         </ul>
       </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+      <section id="profil" class="content-section">
+        <h2>👤 Profil profesora</h2>
+        <p>Dobrodošli, <strong><?php echo $_SESSION['ime'] . " " . $_SESSION['prezime']; ?></strong>.</p>
+        <p>Email: <strong><?php echo $_SESSION['email'] ?? 'Nepoznato'; ?></strong></p>
+        <hr>
+      </section>
+
+      <section id="kompanije" class="content-section d-none">
+        <h2>🏢 Kompanije</h2>
+        <p>Pregled saradničkih kompanija.</p>
+        <hr>
+      </section>
+
+      <section id="studenti" class="content-section d-none">
+        <h2>🎓 Studenti na praksi</h2>
+        <p>Pregled studenata i njihovih praksi.</p>
+        <hr>
+      </section>
+    </main>
+
+  </div>
+</div>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
 <?php include("../includes/footer.php"); ?>
