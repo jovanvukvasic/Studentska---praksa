@@ -57,4 +57,33 @@ if (!isset($_SESSION['korisnik_id']) || $_SESSION['uloga'] !== 'profesor') {
 <script>
   function showSection(id) {
     document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+    event.target.classList.add('active');
+
+    document.querySelectorAll('.content-section').forEach(section => {
+      section.classList.add('d-none');
+    });
+
+    const section = document.getElementById(id);
+    section.classList.remove('d-none');
+
+    if (id === 'profil') {
+      fetch('profesor_profil.php')
+        .then(response => response.text())
+        .then(data => {
+          section.innerHTML = data;
+        });
+    } else if (id === 'kompanije') {
+      fetch('profesor_kompanije.php')
+        .then(response => response.text())
+        .then(data => {
+          section.innerHTML = data;
+        });
+    } else if (id === 'studenti') {
+      fetch('profesor_studenti.php')
+        .then(response => response.text())
+        .then(data => {
+          section.innerHTML = data;
+        });
+    }
+  }
 <?php include("../includes/footer.php"); ?>
