@@ -15,4 +15,20 @@ if ($profesor_id) {
             <div class="row">
                 <div class="col-md-3 text-center">
                     <img src="<?= htmlspecialchars($slika) ?>" alt="Profilna slika" class="img-fluid rounded-circle mb-3" width="150">
+                </div>
+                <div class="col-md-9">
+                    <h3><?= htmlspecialchars($profesor['ime'] . ' ' . $profesor['prezime']) ?></h3>
+                    <p><strong>Zvanje:</strong> <?= htmlspecialchars($profesor['zvanje']) ?></p>
+                    <p><strong>Email:</strong> <?= htmlspecialchars($profesor['email']) ?></p>
+                    <p><strong>Telefon:</strong> <?= htmlspecialchars($profesor['telefon']) ?></p>
+                    <a href="mailto:admin@univerzitet.ba?subject=Izmena profila profesora&body=Poštovani,%0A%0AŽelim da prijavim izmenu informacija u mom profilu..." class="btn btn-outline-danger mt-3">📧 Prijavi grešku</a>
+                </div>
+            </div>
+        </div>
+        <?php
+    } else {
+        echo "<div class='alert alert-danger'>Nema podataka o profesoru.</div>";
+    }
+} else {
+    echo "<div class='alert alert-warning'>Profesor nije prijavljen.</div>";
 ?>
